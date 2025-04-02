@@ -1,8 +1,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@ html, body {
 .App {
   display: flex;
   justify-content: flex-start;
-  height: 100vh;
+  height: auto;
   width: 1200px;
   max-width: 1200px;
   box-sizing: border-box;
@@ -19,9 +19,27 @@ html, body {
   border-right: 2px solid black;
 }
 
+.CollectiveInfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.infoBox {
+  flex: 1;
+  margin: 0 10px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .mangaSearch {
   width: 15vw;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   box-sizing: border-box; 
@@ -40,6 +58,18 @@ html, body {
   text-align: center;
   width: 100%;
   position: relative; /* Enables absolute positioning for child elements */
+}
+
+.searchInput {
+  height: 25px;
+  width: 300px;
+  border-radius: 25px;
+}
+
+.searchButton {
+  height: 30px;
+  border-radius: 25px;
+  margin-left: 5px; /* Adds space between the input and button */
 }
 
 .buttons {
@@ -68,6 +98,8 @@ tr {
 
 table {
   border-collapse: collapse;
+  width: 95%;
+  margin: 25px;
 }
 
 th, td {
@@ -76,11 +108,11 @@ th, td {
 }
 
 .rankHeader {
-  width: 76px;
+  width: 70px;
 }
 
 .titleHeader {
-  width: 490px;
+  width: 450px;
 }
 
 .scoreHeader {
