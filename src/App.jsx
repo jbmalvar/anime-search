@@ -122,11 +122,11 @@ function App() {
 
   return (
     <>
-      <div className="App">
         <video autoPlay loop muted className="background-video">
           <source src={background} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+      <div className="App">
         <div className = "mangaSearch">
           <h1>📖 Manga Search</h1>
           <div className="MangaContainer">

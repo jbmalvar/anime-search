@@ -28,8 +28,11 @@ html, body {
   box-sizing: border-box;
   border-left: 2px solid black; 
   border-right: 2px solid black;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
+  padding: 20px;
+  border-radius: 10px; /* Optional: Add rounded corners */
   z-index: 0;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.9);
 }
 
 .CollectiveInfo {
