@@ -16,7 +16,9 @@ The following **required** functionality is completed:
 - [X] **`useEffect` React hook and `async`/`await` are used**
 - [X] **The app dashboard includes at least three summary statistics about the data** 
   - The app dashboard includes at least three summary statistics about the data, such as:
-    - *insert details here*
+    - Highest Rated Manga out of the 25
+    - Average Manga Scores out of the 25
+    - Total of Completed Manga out of the 25
 - [X] **A search bar allows the user to search for an item in the fetched data**
   - The search bar **correctly** filters items in the list, only displaying items matching the search query
   - The list of results dynamically updates as the user types into the search bar
@@ -42,10 +44,15 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Untitled design](https://i.imgur.com/CfhNksm.gif)
+
+
+imgur link in case: https://imgur.com/a/qw1TqZR
+
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
+Video Record to Canva then on Imgur
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -56,7 +63,9 @@ GIF created with ...
 Describe any challenges encountered while building the app.
 
 Had some struggle with the prev and next had to use copilot for that one to be honest. I had to use AI for a few things when it came to relating to the API calls. Struggled a bit ngl, but I got it done.
-However, I can say with confidence that I can now use an API correctly.
+However, I can say with confidence that I can now use an API correctly. Little bug with the search not sure why the next and prev work, but when it's filtered it doesn't. Nothing too hard to fix, but
+I showed all functionality. Furthermore, since the slider is onchange for the list and filtering, which was on me, it glitches out from the next and prev. The next and prev wasn't intended just an
+extra added feature
 
 ## License
 
