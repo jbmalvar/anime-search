@@ -46,6 +46,9 @@ Here's a walkthrough of implemented user stories:
 
 ![Untitled design](https://i.imgur.com/CfhNksm.gif)
 
+Additional Link
+https://streamable.com/fa9ihx
+
 
 imgur link in case: https://imgur.com/a/qw1TqZR
 
