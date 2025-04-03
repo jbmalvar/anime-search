@@ -6,24 +6,24 @@ function App() {
   const [mangaList, setMangaList] = useState([]);
   const [highestRated, setHighestRated] = useState(null);
   const [filteredResults, setFilteredResults] = useState([]);
-  const[searchInput, setSearchInput] = useState("");
-  const[averageScore, setAverageScore] = useState(0);
+  const [searchInput, setSearchInput] = useState("");
+  const [averageScore, setAverageScore] = useState(0);
   const [sliderValue, setSliderValue] = useState(0);
   const [scoreFilter, setScoreFilter] = useState(0);
   const [selectedManga, setSelectedManga] = useState(null);
-  
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     const fetchMangaData = async () => {
       const response = await fetch(
-        "https://api.jikan.moe/v4/manga"
+        `https://api.jikan.moe/v4/manga?page=${currentPage}`
       );
       const json = await response.json();
       setMangaList(json.data);
     };
 
     fetchMangaData().catch(console.error);
-  }
-  , []);
+  }, [currentPage]);
 
   useEffect(() => {
     highestRatedManga();
@@ -109,7 +109,16 @@ function App() {
       url: manga.url || '#',
     });
   };
-    
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
 
   return (
     <>
@@ -140,8 +149,8 @@ function App() {
             <h1>
               Mangas
               <span className = "buttons">
-                <button className = "button">Prev 25</button>
-                <button className = "button">Next 25</button>
+                <button className = "button" onClick={handlePrevPage} disabled={currentPage === 1}>Prev 25</button>
+                <button className = "button" onClick={handleNextPage}>Next 25</button>
               </span>
             </h1>
             <div className = "CollectiveInfo">
