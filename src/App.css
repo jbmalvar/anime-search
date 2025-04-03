@@ -66,10 +66,18 @@ html, body {
   border-radius: 25px;
 }
 
+.searchHeader {
+  display: flex; /* Use Flexbox for layout */
+  justify-content: center; /* Center all child elements horizontally */
+  align-items: center; /* Center all child elements vertically */
+  gap: 10px; /* Reduce spacing between child elements */
+  margin-top: 20px; /* Optional: Add spacing above the search header */
+}
+
 .searchButton {
   height: 30px;
   border-radius: 25px;
-  margin-left: 5px; /* Adds space between the input and button */
+  margin-left: -10px;
 }
 
 .buttons {
