@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import background from './assets/background.mp4'
 
 function App() {
   const [mangaList, setMangaList] = useState([]);
@@ -9,6 +10,7 @@ function App() {
   const[averageScore, setAverageScore] = useState(0);
   const [sliderValue, setSliderValue] = useState(0);
   const [scoreFilter, setScoreFilter] = useState(0);
+  const [selectedManga, setSelectedManga] = useState(null);
   
   useEffect(() => {
     const fetchMangaData = async () => {
@@ -62,7 +64,7 @@ function App() {
       baseList = baseList.filter((item) =>
         item.title.toLowerCase().includes(searchInput.toLowerCase())
       );
-    }r
+    }
     baseList = baseList.filter((item) => {
       const score = item.score || 0;
       return score >= sliderValue;
@@ -99,11 +101,38 @@ function App() {
     }
   }
 
+  const handleMangaClick = (manga) => {
+    setSelectedManga({
+      title: manga.title,
+      image: manga.images?.jpg?.large_image_url || '',
+      description: manga.synopsis || 'No description available.',
+      url: manga.url || '#',
+    });
+  };
+    
+
   return (
     <>
       <div className="App">
+        <video autoPlay loop muted className="background-video">
+          <source src={background} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className = "mangaSearch">
           <h1>📖 Manga Search</h1>
+          <div className="MangaContainer">
+            {selectedManga ? (
+              <>
+                <a href={selectedManga.url || '#'} target="_blank" rel="noopener noreferrer">
+                  <h2 className="title">{selectedManga.title}</h2>
+                </a>
+                <img src={selectedManga.image} alt={selectedManga.title} className = "image"/>
+                <p className = "desc">{selectedManga.description}</p>
+              </>
+            ) : (
+              <p>Select a manga to see details</p>
+            )}
+          </div>
           <div className = "Manga"></div>
         </div>
         <div className = "MangaSearchContainer">
@@ -167,9 +196,18 @@ function App() {
                   <tr key={manga.mal_id}>
                     <td>{manga.rank}</td>
                     <td>
-                      <a href={manga.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}>
-                        {manga.title}
-                      </a>
+                    <button
+                          onClick={() => handleMangaClick(manga)}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            color: 'white',
+                            textDecoration: 'underline',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          {manga.title}
+                        </button>
                     </td>
                     <td>{manga.score || 'N/A'}</td>
                     <td>{manga.authors?.[0]?.name || 'Unknown'}</td>

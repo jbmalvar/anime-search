@@ -8,15 +8,28 @@ html, body {
   align-items: center;
 }
 
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
 .App {
   display: flex;
   justify-content: flex-start;
+  min-height: 100vh;
   height: auto;
   width: 1200px;
   max-width: 1200px;
   box-sizing: border-box;
   border-left: 2px solid black; 
   border-right: 2px solid black;
+  background-color: white;
+  z-index: 0;
 }
 
 .CollectiveInfo {
@@ -40,6 +53,8 @@ html, body {
 .mangaSearch {
   width: 15vw;
   height: auto;
+  margin: 20px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box; 
@@ -133,4 +148,20 @@ th, td {
 
 .statusHeader {
   width: 90px;
+}
+
+.MangaContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  width: 90%;
+  height: 40%;
+}
+
+.desc {
+  font-size: 12px;
+  padding: 10px;
 }
