@@ -7,6 +7,8 @@ function App() {
   const [filteredResults, setFilteredResults] = useState([]);
   const[searchInput, setSearchInput] = useState("");
   const[averageScore, setAverageScore] = useState(0);
+  const [sliderValue, setSliderValue] = useState(0);
+  const [scoreFilter, setScoreFilter] = useState(0);
   
   useEffect(() => {
     const fetchMangaData = async () => {
@@ -26,6 +28,10 @@ function App() {
     averageScoreManga();
     numberCompleted();
   }, [filteredResults, mangaList]);
+
+  useEffect(() => {
+    filterByScore();
+  }, [sliderValue]);
 
   const searchItems = searchValue => {
     setSearchInput(searchValue);
@@ -50,6 +56,20 @@ function App() {
     }
   }
 
+  const filterByScore = () => {
+    let baseList = mangaList;
+    if (searchInput) {
+      baseList = baseList.filter((item) =>
+        item.title.toLowerCase().includes(searchInput.toLowerCase())
+      );
+    }r
+    baseList = baseList.filter((item) => {
+      const score = item.score || 0;
+      return score >= sliderValue;
+    });
+  
+    setFilteredResults(baseList);
+  };
   const highestRatedManga = () => {
     const currentList = filteredResults.length > 0 ? filteredResults : mangaList;
     if (currentList.length > 0) {
@@ -118,7 +138,18 @@ function App() {
                 <option value="Publishing">Publishing</option>
                 <option value="On Hiatus">On Hiatus</option>
               </select>
-              <input type='range' min="0" max = '10' step='1'></input>
+              <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                <span>Score: {sliderValue}</span>
+                <input
+                  type="range"
+                  min="0"
+                  max="9"
+                  step="1"
+                  value={sliderValue}
+                  onChange={(e) => setSliderValue(e.target.value)}
+                  style={{ display: 'block', margin: '10px auto' }}
+                />
+            </div>
             </h2>
             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table">
               <thead>
